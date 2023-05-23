@@ -3,8 +3,10 @@ import React, { useState }  from "react";
 import Footer from "../Footer/Footer";
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 function Sinscrire (){
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         username: '',
@@ -25,6 +27,7 @@ function Sinscrire (){
             await axios.post('http://localhost:3001/api/register', formData);
             console.log('Utilisateur inscrit avec succès !');
             // Effectuer des actions supplémentaires après l'inscription réussie
+            navigate('/');
           } catch (error) {
             console.error('Erreur lors de l\'inscription :', error.message);
           }
